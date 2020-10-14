@@ -641,7 +641,9 @@ version = "0.1.0"
 dependencies = [
  "clap",
  "failure",
+ "lazy_static",
  "prometheus_exporter_base",
+ "regex",
  "tokio",
 ]
 
