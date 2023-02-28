@@ -1,17 +1,9 @@
-#[derive(Debug, Clone)]
-pub(crate) struct Options {
-    pub port: u16,
-}
+use structopt::StructOpt;
 
-impl Options {
-    pub fn from_claps(matches: &clap::ArgMatches<'_>) -> Options {
-        Options {
-            // All options are either required or have a default value, so unwrap should be safe
-            port: matches
-                .value_of("port")
-                .map(|e| e.parse())
-                .unwrap()
-                .expect("Invalid port number"),
-        }
-    }
+#[derive(StructOpt, Debug)]
+#[structopt(name = "powerpanek exporter")]
+pub(crate) struct Options {
+    /// Sets the port the exporter uses
+    #[structopt(short, long, default_value = "9102")]
+    pub port: u16,
 }
